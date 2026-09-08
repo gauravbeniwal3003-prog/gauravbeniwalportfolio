@@ -26,14 +26,14 @@ export default function CybersecurityAuditPage() {
     "@graph": [
       {
         "@type": "SecurityService",
-        "@id": "https://gauravbeniwal.online/services/cybersecurity-audit#service",
+        "@id": "https://www.gauravbeniwal.online/services/cybersecurity-audit#service",
         "name": "Web Application Penetration Testing & Cybersecurity Audit",
         "provider": {
           "@type": "Person",
           "name": "Gaurav Beniwal",
           "telephone": siteConfig.phone,
           "email": siteConfig.email,
-          "url": "https://gauravbeniwal.online"
+          "url": "https://www.gauravbeniwal.online"
         },
         "description": "Professional web application penetration testing, OWASP Top 10 vulnerability remediation, anti-DDoS configuration, and security hardening.",
         "areaServed": ["Panipat", "Haryana", "Delhi NCR", "India", "Global"]

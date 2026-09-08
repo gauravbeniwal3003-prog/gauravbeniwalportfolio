@@ -151,6 +151,11 @@ export default function Footer() {
                   Contact &amp; Quotes
                 </a>
               </li>
+              <li>
+                <a href="/sitemap.xml" target="_blank" rel="noopener noreferrer" className="hover:text-zinc-950 transition-colors">
+                  XML Sitemap
+                </a>
+              </li>
             </ul>
           </div>
 

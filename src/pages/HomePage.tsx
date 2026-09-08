@@ -14,42 +14,74 @@ export default function HomePage() {
     "@context": "https://schema.org",
     "@graph": [
       {
+        "@type": "WebSite",
+        "@id": "https://www.gauravbeniwal.online/#website",
+        "url": "https://www.gauravbeniwal.online/",
+        "name": "Gaurav Beniwal — Full-Stack Developer & Website Builder",
+        "description": "Official portfolio and digital engineering services of Gaurav Beniwal in Panipat, Haryana.",
+        "publisher": {
+          "@id": "https://www.gauravbeniwal.online/#person"
+        },
+        "inLanguage": "en-US"
+      },
+      {
         "@type": "Person",
-        "@id": "https://gauravbeniwal.online/#person",
+        "@id": "https://www.gauravbeniwal.online/#person",
         "name": "Gaurav Beniwal",
-        "url": "https://gauravbeniwal.online",
-        "image": "https://gauravbeniwal.online/images/profile.jpg",
-        "jobTitle": "Full-Stack Developer & Cybersecurity Specialist",
+        "url": "https://www.gauravbeniwal.online/",
+        "image": "https://www.gauravbeniwal.online/images/profile.jpg",
+        "jobTitle": "Full-Stack Developer, Website Builder & Cybersecurity Specialist",
         "worksFor": {
           "@type": "Organization",
-          "name": "Freelance & Independent Consulting"
+          "name": "Freelance & Independent Software Engineering"
         },
         "address": {
           "@type": "PostalAddress",
+          "streetAddress": "Panipat & Samalkha",
           "addressLocality": "Panipat",
           "addressRegion": "Haryana",
+          "postalCode": "132103",
           "addressCountry": "IN"
         },
         "sameAs": [
           siteConfig.socials.instagram,
           siteConfig.socials.github,
-          siteConfig.socials.linkedin
-        ].filter(Boolean)
+          siteConfig.socials.linkedin,
+          siteConfig.socials.youtube,
+          siteConfig.socials.x
+        ].filter(Boolean),
+        "knowsAbout": [
+          "Full-Stack Web Development",
+          "Fast Business Website Building",
+          "Android & iOS App Development",
+          "Cybersecurity & Penetration Testing",
+          "Python Scripting & Task Automation",
+          "E-Commerce Marketplaces & UPI Integration",
+          "React, Node.js, Next.js, TypeScript",
+          "Reverse Engineering & Binary Analysis"
+        ]
       },
       {
         "@type": "ProfessionalService",
-        "@id": "https://gauravbeniwal.online/#service",
+        "@id": "https://www.gauravbeniwal.online/#service",
         "name": "Gaurav Beniwal — Digital Product & Website Engineering",
-        "url": "https://gauravbeniwal.online",
-        "image": "https://gauravbeniwal.online/images/profile.jpg",
+        "url": "https://www.gauravbeniwal.online/",
+        "image": "https://www.gauravbeniwal.online/images/profile.jpg",
         "telephone": siteConfig.phone,
         "email": siteConfig.email,
         "priceRange": "₹₹",
         "address": {
           "@type": "PostalAddress",
+          "streetAddress": "Panipat Main Commercial Hub",
           "addressLocality": "Panipat",
           "addressRegion": "Haryana",
+          "postalCode": "132103",
           "addressCountry": "IN"
+        },
+        "geo": {
+          "@type": "GeoCoordinates",
+          "latitude": 29.3909,
+          "longitude": 76.9635
         },
         "areaServed": [
           "Panipat",
@@ -61,6 +93,44 @@ export default function HomePage() {
           "India",
           "Worldwide"
         ]
+      },
+      {
+        "@type": "FAQPage",
+        "@id": "https://www.gauravbeniwal.online/#faq",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "Who is Gaurav Beniwal?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Gaurav Beniwal is an 18-year-old software developer, website builder, app engineer, and cybersecurity specialist based in Panipat and Samalkha, Haryana, India with 4+ years of hands-on software development experience."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What services does Gaurav Beniwal offer in Panipat and Haryana?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Gaurav provides high-speed custom website building (starting ₹4,999), cross-platform Android/iOS mobile applications, e-commerce stores with UPI checkout, automated business systems/CRM, and web security vulnerability audits."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Does Gaurav Beniwal build websites for local businesses and textile factories?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes. Gaurav specializes in building digital presences for Panipat textile mills, yarn manufacturers, export houses, local shops, and healthcare clinics with sub-second loading speeds and top Google Local search rankings."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How can I contact Gaurav Beniwal for a project?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "You can connect with Gaurav directly on WhatsApp or mobile at +91 9729480795, via email at gauravbeniwal30003@gmail.com, or through his portfolio website at https://www.gauravbeniwal.online/."
+            }
+          }
+        ]
       }
     ]
   };
@@ -69,8 +139,8 @@ export default function HomePage() {
     <>
       <SEOHead
         title="Gaurav Beniwal — Full-Stack Developer, Website Builder & Cybersecurity in Panipat, Haryana"
-        description="Official portfolio of Gaurav Beniwal. Elite full-stack software engineer, fast website builder & cybersecurity expert in Panipat, Haryana. Delivering high-speed web apps & digital solutions."
-        keywords="Gaurav Beniwal, developer Panipat, website builder Panipat, web designer Haryana, app developer Samalkha, cybersecurity consultant Haryana, full stack developer India"
+        description="Official portfolio of Gaurav Beniwal. 18-year-old full-stack software developer, website builder, and cybersecurity specialist in Panipat, Haryana with 4+ years practical experience. Fast websites, mobile apps & digital solutions."
+        keywords="Gaurav Beniwal, developer Panipat, website builder Panipat, web designer Haryana, app developer Samalkha, cybersecurity consultant Haryana, full stack developer India, Gaurav Beniwal portfolio"
         canonicalPath="/"
         structuredData={homeSchema}
       />

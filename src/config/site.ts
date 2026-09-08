@@ -69,7 +69,7 @@ export interface SiteConfig {
 export const siteConfig: SiteConfig = {
   // Your Name & Details
   name: "Gaurav Beniwal",
-  domain: "https://gauravbeniwal.online",
+  domain: "www.gauravbeniwal.online",
   role: "Full-Stack Developer, App & Website Builder",
   age: 18,
   location: "Panipat & Samalkha, Haryana, India",

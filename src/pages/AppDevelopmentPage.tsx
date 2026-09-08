@@ -29,7 +29,7 @@ export default function AppDevelopmentPage() {
     "@graph": [
       {
         "@type": "Service",
-        "@id": "https://gauravbeniwal.online/services/app-development#service",
+        "@id": "https://www.gauravbeniwal.online/services/app-development#service",
         "name": "Custom Mobile App Development (Android & iOS)",
         "serviceType": "Mobile Application Development",
         "provider": {
@@ -37,7 +37,7 @@ export default function AppDevelopmentPage() {
           "name": "Gaurav Beniwal",
           "telephone": siteConfig.phone,
           "email": siteConfig.email,
-          "url": "https://gauravbeniwal.online"
+          "url": "https://www.gauravbeniwal.online"
         },
         "description": "High-performance Android and iOS mobile application development with React Native, Flutter, offline-first sync, and real-time backend.",
         "areaServed": ["Panipat", "Haryana", "Delhi NCR", "India", "Global"],

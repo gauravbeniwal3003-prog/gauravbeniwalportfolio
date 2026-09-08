@@ -74,12 +74,18 @@ export default function Hero() {
               </span>
             </div>
 
-            {/* Primary Headline */}
+            {/* Primary Headline: Exact 1 H1 on Homepage with Personal Brand + Core Competencies + Geo Target */}
             <h1 
               id="hero-main-headline"
-              className="text-4xl sm:text-5xl lg:text-[54px] font-extrabold tracking-tight text-zinc-950 leading-[1.12]"
+              className="text-3xl sm:text-5xl lg:text-[52px] font-extrabold tracking-tight text-zinc-950 leading-[1.14]"
             >
-              {siteConfig.hero.headline}
+              <span className="block text-lg sm:text-xl font-bold text-emerald-600 tracking-wide uppercase mb-2">
+                Gaurav Beniwal
+              </span>
+              Full-Stack Developer, Website &amp; App Builder{' '}
+              <span className="text-zinc-500 font-semibold text-xl sm:text-3xl lg:text-4xl block mt-1">
+                in Panipat &amp; Haryana
+              </span>
             </h1>
 
             {/* Natural Human Introduction */}

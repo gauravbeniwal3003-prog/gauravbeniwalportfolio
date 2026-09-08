@@ -30,10 +30,10 @@ export default function WebsiteBuilderPanipatPage() {
     "@graph": [
       {
         "@type": "LocalBusiness",
-        "@id": "https://gauravbeniwal.online/services/website-builder-panipat#business",
+        "@id": "https://www.gauravbeniwal.online/services/website-builder-panipat#business",
         "name": "Website Builder & Web Designer Panipat — Gaurav Beniwal",
-        "image": "https://gauravbeniwal.online/images/profile.jpg",
-        "url": "https://gauravbeniwal.online/services/website-builder-panipat",
+        "image": "https://www.gauravbeniwal.online/images/profile.jpg",
+        "url": "https://www.gauravbeniwal.online/services/website-builder-panipat",
         "telephone": siteConfig.phone,
         "email": siteConfig.email,
         "priceRange": "₹4,999 - ₹25,000",

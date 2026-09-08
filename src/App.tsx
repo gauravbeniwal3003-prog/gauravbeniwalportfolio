@@ -12,6 +12,7 @@ import AppDevelopmentPage from './pages/AppDevelopmentPage';
 import CybersecurityAuditPage from './pages/CybersecurityAuditPage';
 import EcommerceDevelopmentPage from './pages/EcommerceDevelopmentPage';
 import BusinessAutomationPage from './pages/BusinessAutomationPage';
+import NotFoundPage from './pages/NotFoundPage';
 
 export default function App() {
   return (
@@ -40,8 +41,8 @@ export default function App() {
             <Route path="/services/ecommerce-development" element={<EcommerceDevelopmentPage />} />
             <Route path="/services/business-automation" element={<BusinessAutomationPage />} />
 
-            {/* Fallback */}
-            <Route path="*" element={<Navigate to="/" replace />} />
+            {/* Dedicated Custom 404 Page (maintains link equity & rescues lost traffic) */}
+            <Route path="*" element={<NotFoundPage />} />
           </Routes>
         </main>
 

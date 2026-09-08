@@ -24,14 +24,14 @@ export default function BusinessAutomationPage() {
     "@graph": [
       {
         "@type": "Service",
-        "@id": "https://gauravbeniwal.online/services/business-automation#service",
+        "@id": "https://www.gauravbeniwal.online/services/business-automation#service",
         "name": "Custom Business Software & Workflow Automation",
         "provider": {
           "@type": "Person",
           "name": "Gaurav Beniwal",
           "telephone": siteConfig.phone,
           "email": siteConfig.email,
-          "url": "https://gauravbeniwal.online"
+          "url": "https://www.gauravbeniwal.online"
         },
         "description": "Custom CRM, ERP, WhatsApp automation bots, factory inventory tools and automated reporting systems by developer Gaurav Beniwal.",
         "areaServed": ["Panipat", "Haryana", "Delhi NCR", "India", "Global"]

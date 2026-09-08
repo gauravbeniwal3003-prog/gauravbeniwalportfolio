@@ -6,6 +6,7 @@ export interface SEOProps {
   description: string;
   keywords: string;
   canonicalPath: string;
+  robots?: string;
   ogType?: 'website' | 'article' | 'profile';
   ogImage?: string;
   structuredData?: Record<string, unknown> | Array<Record<string, unknown>>;
@@ -16,8 +17,9 @@ export default function SEOHead({
   description,
   keywords,
   canonicalPath,
+  robots = 'index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1',
   ogType = 'website',
-  ogImage = 'https://gauravbeniwal.online/images/profile.jpg',
+  ogImage,
   structuredData,
 }: SEOProps) {
   useEffect(() => {
@@ -35,10 +37,15 @@ export default function SEOHead({
       meta.setAttribute('content', content);
     };
 
-    // Helper to update canonical link
-    const domain = siteConfig.domain || 'gauravbeniwal.online';
+    // Normalize domain
+    const cleanDomain = (siteConfig.domain || 'www.gauravbeniwal.online')
+      .replace(/^https?:\/\//, '')
+      .replace(/\/$/, '');
+
+    // Canonical URL: Trailing slash on root, no trailing slash on subpaths
     const cleanPath = canonicalPath.startsWith('/') ? canonicalPath : `/${canonicalPath}`;
-    const canonicalUrl = `https://${domain}${cleanPath === '/' ? '' : cleanPath}`;
+    const canonicalUrl = `https://${cleanDomain}${cleanPath === '/' ? '/' : cleanPath}`;
+    const resolvedOgImage = ogImage || `https://${cleanDomain}/images/profile.jpg`;
 
     let canonicalLink = document.querySelector('link[rel="canonical"]');
     if (!canonicalLink) {
@@ -51,19 +58,20 @@ export default function SEOHead({
     // 2. Standard Meta Tags
     setMetaTag('name', 'description', description);
     setMetaTag('name', 'keywords', keywords);
+    setMetaTag('name', 'robots', robots);
 
     // 3. Open Graph Tags
     setMetaTag('property', 'og:title', title);
     setMetaTag('property', 'og:description', description);
     setMetaTag('property', 'og:url', canonicalUrl);
     setMetaTag('property', 'og:type', ogType);
-    setMetaTag('property', 'og:image', ogImage);
+    setMetaTag('property', 'og:image', resolvedOgImage);
     setMetaTag('property', 'og:site_name', 'Gaurav Beniwal — Digital Solutions & Development');
 
     // 4. Twitter Card Tags
     setMetaTag('name', 'twitter:title', title);
     setMetaTag('name', 'twitter:description', description);
-    setMetaTag('name', 'twitter:image', ogImage);
+    setMetaTag('name', 'twitter:image', resolvedOgImage);
     setMetaTag('name', 'twitter:url', canonicalUrl);
     setMetaTag('name', 'twitter:card', 'summary_large_image');
 
@@ -90,7 +98,7 @@ export default function SEOHead({
         existing.remove();
       }
     };
-  }, [title, description, keywords, canonicalPath, ogType, ogImage, structuredData]);
+  }, [title, description, keywords, canonicalPath, robots, ogType, ogImage, structuredData]);
 
   return null;
 }

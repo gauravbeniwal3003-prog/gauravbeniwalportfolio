@@ -1,9 +1,24 @@
 # Robots.txt for Gaurav Beniwal Portfolio & Personal Brand
-# Website: https://gauravbeniwal.online
-# Optimized for Googlebot, Bingbot, and modern search crawlers
+# Canonical Host: https://www.gauravbeniwal.online/
+# Optimized for Googlebot, Bingbot, and modern web crawlers
 
 User-agent: *
 Allow: /
+Disallow: /api/
 
-# Direct search engine crawlers to the sitemap
-Sitemap: https://gauravbeniwal.online/sitemap.xml
+User-agent: Googlebot
+Allow: /
+Allow: /images/
+Allow: /assets/
+Allow: /favicon.svg
+
+User-agent: Googlebot-Image
+Allow: /
+Allow: /images/
+
+User-agent: Bingbot
+Allow: /
+
+# Canonical XML Sitemap
+Sitemap: https://www.gauravbeniwal.online/sitemap.xml
+

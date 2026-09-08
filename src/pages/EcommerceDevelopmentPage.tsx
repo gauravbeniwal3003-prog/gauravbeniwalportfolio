@@ -25,14 +25,14 @@ export default function EcommerceDevelopmentPage() {
     "@graph": [
       {
         "@type": "Service",
-        "@id": "https://gauravbeniwal.online/services/ecommerce-development#service",
+        "@id": "https://www.gauravbeniwal.online/services/ecommerce-development#service",
         "name": "E-Commerce Website & Online Store Development",
         "provider": {
           "@type": "Person",
           "name": "Gaurav Beniwal",
           "telephone": siteConfig.phone,
           "email": siteConfig.email,
-          "url": "https://gauravbeniwal.online"
+          "url": "https://www.gauravbeniwal.online"
         },
         "description": "Custom e-commerce store development, Panipat textile B2B/B2C portals, UPI payment gateways, automated shipping integration, and high-conversion checkout flows.",
         "areaServed": ["Panipat", "Haryana", "Delhi NCR", "India", "Global"]

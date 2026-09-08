@@ -84,7 +84,7 @@ export default function ServicesIndexPage() {
           "@type": "ListItem",
           "position": idx + 1,
           "name": s.title,
-          "url": `https://gauravbeniwal.online${s.slug}`
+          "url": `https://www.gauravbeniwal.online${s.slug}`
         }))
       }
     ]

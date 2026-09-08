@@ -1,6 +1,6 @@
 /**
- * Security, Anti-Abuse & Rate Limiting Engine
- * Provides client-side bot detection, honeypots, rate limiting & anti-scraping shields.
+ * Security, Anti-Abuse & Anti-DDoS Protection Engine
+ * Provides client-side bot detection, honeypots, rate limiting & anti-flooding shields.
  */
 
 // Rate limit tracker using localStorage/sessionStorage
@@ -11,9 +11,11 @@ interface RateLimitBucket {
 
 class SecurityEngine {
   private static instance: SecurityEngine;
-  private readonly maxTokens = 5;
-  private readonly refillRateMs = 15000; // 1 token every 15 seconds
+  private readonly maxTokens = 8;
+  private readonly refillRateMs = 10000; // 1 token every 10 seconds
   private readonly storageKey = '__gb_sec_rl_bucket';
+  private requestLog: number[] = [];
+  private readonly floodThreshold = 25; // max 25 rapid interactions within 5 seconds
 
   private constructor() {
     this.initSecurityGuards();
@@ -51,11 +53,26 @@ class SecurityEngine {
   }
 
   /**
+   * Checks for abusive client-side click/event flooding (Anti-DDoS / Anti-Spam protection)
+   */
+  public isFloodAttack(): boolean {
+    const now = Date.now();
+    this.requestLog = this.requestLog.filter(time => now - time < 5000);
+    this.requestLog.push(now);
+
+    return this.requestLog.length > this.floodThreshold;
+  }
+
+  /**
    * Rate limits an action (e.g. contact click, form submit, copy action)
    * Returns { allowed: boolean, remainingMs?: number }
    */
   public checkRateLimit(actionKey = 'global'): { allowed: boolean; remainingCooldownMs: number } {
     if (typeof window === 'undefined') return { allowed: true, remainingCooldownMs: 0 };
+
+    if (this.isFloodAttack()) {
+      return { allowed: false, remainingCooldownMs: 5000 };
+    }
 
     const now = Date.now();
     const key = `${this.storageKey}_${actionKey}`;
@@ -109,7 +126,11 @@ class SecurityEngine {
    */
   public sanitize(input: string): string {
     return input
-      .replace(/[<>]/g, '') // Strip brackets
+      .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;')
+      .replace(/"/g, '&quot;')
+      .replace(/'/g, '&#x27;')
       .trim()
       .slice(0, 1000); // Enforce max length bound
   }
