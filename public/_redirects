@@ -1,3 +1,0 @@
-# Cloudflare Pages Single Page Application (SPA) redirect rule
-# Serves index.html for all routes while keeping static assets direct
-/*    /index.html   200
