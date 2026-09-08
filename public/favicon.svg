@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128">
+  <defs>
+    <clipPath id="circleView">
+      <circle cx="64" cy="64" r="58" />
+    </clipPath>
+  </defs>
+  <!-- Modern emerald brand accent ring -->
+  <circle cx="64" cy="64" r="62" fill="#10b981" />
+  <circle cx="64" cy="64" r="59" fill="#09090b" />
+  <image href="/images/profile.jpg" x="6" y="6" width="116" height="116" clip-path="url(#circleView)" preserveAspectRatio="xMidYMid slice" />
+</svg>

@@ -1,14 +1,32 @@
-# Cloudflare Pages Headers Configuration
-# Global security headers for all pages
+# Cloudflare & Edge Headers Configuration
+# Global security and Anti-DDoS defense headers for all pages
 /*
   X-Content-Type-Options: nosniff
   X-Frame-Options: SAMEORIGIN
+  X-XSS-Protection: 1; mode=block
   Referrer-Policy: strict-origin-when-cross-origin
+  Strict-Transport-Security: max-age=63072000; includeSubDomains; preload
+  Permissions-Policy: camera=(), microphone=(), geolocation=(), payment=(), usb=()
+  Cross-Origin-Opener-Policy: same-origin-allow-popups
+  Content-Security-Policy: default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https: blob:; connect-src 'self' https:; frame-ancestors 'self'; base-uri 'self'; form-action 'self' https: mailto: tel:;
 
-# Long-term immutable caching for hashed production assets (JS, CSS)
+# Ultra high-performance immutable caching for hashed production assets (JS, CSS)
 /assets/*
   Cache-Control: public, max-age=31536000, immutable
 
-# Images caching
+# Images caching with stale-while-revalidate for instant visual load
 /images/*
   Cache-Control: public, max-age=604800, stale-while-revalidate=86400
+
+# Favicons & Manifest caching
+/favicon*
+  Cache-Control: public, max-age=604800, stale-while-revalidate=86400
+
+/icon*
+  Cache-Control: public, max-age=604800, stale-while-revalidate=86400
+
+/apple-touch-icon*
+  Cache-Control: public, max-age=604800, stale-while-revalidate=86400
+
+/site.webmanifest
+  Cache-Control: public, max-age=86400, stale-while-revalidate=3600

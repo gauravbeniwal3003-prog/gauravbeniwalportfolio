@@ -1,5 +1,6 @@
-import { useState } from 'react';
+import { useState, FormEvent, useRef, MouseEvent } from 'react';
 import { siteConfig } from '../config/site';
+import { security } from '../utils/security';
 import { 
   MessageSquare, 
   Phone, 
@@ -9,23 +10,102 @@ import {
   Check, 
   ArrowUpRight, 
   MapPin, 
-  Clock 
+  Clock,
+  ShieldCheck,
+  AlertCircle,
+  Send
 } from 'lucide-react';
 
 export default function Contact() {
   const [copiedType, setCopiedType] = useState<'email' | 'phone' | 'instagram' | null>(null);
+  const [rateLimitWarning, setRateLimitWarning] = useState<string | null>(null);
+
+  // Quick inquiry state
+  const [senderName, setSenderName] = useState('');
+  const [projectType, setProjectType] = useState('Website Builder / Business Site');
+  const [inquiryMessage, setInquiryMessage] = useState('');
+  const [honeypot, setHoneypot] = useState('');
+  const [submitSuccess, setSubmitSuccess] = useState(false);
+  const formLoadTimeRef = useRef<number>(Date.now());
 
   // Generate clean WhatsApp link
-  // Removes non-numeric characters from the configured phone number
   const cleanWhatsAppNumber = siteConfig.whatsapp.replace(/[^0-9]/g, '');
   const whatsAppUrl = `https://wa.me/${cleanWhatsAppNumber}?text=${encodeURIComponent(
     siteConfig.whatsappPrefillMessage
   )}`;
 
+  const triggerRateLimitAlert = (remainingMs: number) => {
+    const seconds = Math.ceil(remainingMs / 1000) || 5;
+    setRateLimitWarning(`Rate limit protection active: Please wait ${seconds}s before performing another action.`);
+    setTimeout(() => setRateLimitWarning(null), 4000);
+  };
+
+  const handleActionWithRateLimit = (e: MouseEvent) => {
+    const check = security.checkRateLimit('contact_click');
+    if (!check.allowed) {
+      e.preventDefault();
+      triggerRateLimitAlert(check.remainingCooldownMs);
+      return;
+    }
+  };
+
   const copyToClipboard = (text: string, type: 'email' | 'phone' | 'instagram') => {
+    const check = security.checkRateLimit('copy_action');
+    if (!check.allowed) {
+      triggerRateLimitAlert(check.remainingCooldownMs);
+      return;
+    }
+
     navigator.clipboard.writeText(text);
     setCopiedType(type);
     setTimeout(() => setCopiedType(null), 2500);
+  };
+
+  const handleQuickInquirySubmit = (e: FormEvent, channel: 'whatsapp' | 'email') => {
+    e.preventDefault();
+
+    // 1. Bot Honeypot Check
+    if (honeypot.trim().length > 0) {
+      console.warn('Bot submission blocked via honeypot trap.');
+      return;
+    }
+
+    // 2. Timing Trap (Bot submissions completing within 1 second)
+    const elapsed = Date.now() - formLoadTimeRef.current;
+    if (elapsed < 1200) {
+      triggerRateLimitAlert(4000);
+      return;
+    }
+
+    // 3. Rate Limit Check
+    const rateCheck = security.checkRateLimit('form_submit');
+    if (!rateCheck.allowed) {
+      triggerRateLimitAlert(rateCheck.remainingCooldownMs);
+      return;
+    }
+
+    // 4. Sanitize inputs
+    const cleanName = security.sanitize(senderName);
+    const cleanMsg = security.sanitize(inquiryMessage);
+
+    if (!cleanName && !cleanMsg) {
+      setRateLimitWarning('Please enter your name or project details.');
+      setTimeout(() => setRateLimitWarning(null), 3000);
+      return;
+    }
+
+    const payloadText = `Hi Gaurav, I'm ${cleanName || 'a client'}.\nProject Type: ${projectType}\nDetails: ${cleanMsg || 'I want to discuss a project with you.'}`;
+
+    if (channel === 'whatsapp') {
+      const url = `https://wa.me/${cleanWhatsAppNumber}?text=${encodeURIComponent(payloadText)}`;
+      window.open(url, '_blank', 'noopener,noreferrer');
+    } else {
+      const mailUrl = `mailto:${siteConfig.email}?subject=${encodeURIComponent(`Project Inquiry: ${projectType} from ${cleanName || 'Client'}`)}&body=${encodeURIComponent(payloadText)}`;
+      window.location.href = mailUrl;
+    }
+
+    setSubmitSuccess(true);
+    setTimeout(() => setSubmitSuccess(false), 5000);
   };
 
   return (
@@ -46,11 +126,39 @@ export default function Contact() {
 
           <div className="max-w-2xl mx-auto text-center space-y-6">
             
-            {/* Status Pill */}
-            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emerald-50 border border-emerald-200/70 text-xs font-semibold text-emerald-800">
-              <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
-              <span>{siteConfig.status.badgeText}</span>
+            {/* Status Pill & Security Indicator */}
+            <div className="flex flex-wrap items-center justify-center gap-2">
+              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emerald-50 border border-emerald-200/70 text-xs font-semibold text-emerald-800">
+                <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
+                <span>{siteConfig.status.badgeText}</span>
+              </div>
+              <div className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-zinc-100/80 border border-zinc-200/80 text-[11px] font-medium text-zinc-600">
+                <ShieldCheck className="w-3.5 h-3.5 text-emerald-600" />
+                <span>Rate-Limit &amp; Anti-DDoS Protected</span>
+              </div>
             </div>
+
+            {/* Rate limit warning banner */}
+            {rateLimitWarning && (
+              <div 
+                role="alert"
+                className="p-3 rounded-xl bg-amber-50 border border-amber-200 text-amber-900 text-xs font-semibold flex items-center justify-center gap-2 animate-in fade-in zoom-in duration-200"
+              >
+                <AlertCircle className="w-4 h-4 text-amber-600 shrink-0" />
+                <span>{rateLimitWarning}</span>
+              </div>
+            )}
+
+            {/* Success banner */}
+            {submitSuccess && (
+              <div 
+                role="status"
+                className="p-3 rounded-xl bg-emerald-50 border border-emerald-200 text-emerald-900 text-xs font-semibold flex items-center justify-center gap-2 animate-in fade-in duration-200"
+              >
+                <Check className="w-4 h-4 text-emerald-600 shrink-0" />
+                <span>Redirecting to message composer!</span>
+              </div>
+            )}
 
             {/* Heading */}
             <h2 
@@ -74,6 +182,7 @@ export default function Contact() {
                 href={whatsAppUrl}
                 target="_blank"
                 rel="noopener noreferrer"
+                onClick={handleActionWithRateLimit}
                 className="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-6 py-3.5 rounded-full bg-emerald-600 hover:bg-emerald-500 text-white font-semibold text-[14.5px] transition-all duration-200 shadow-sm hover:shadow-[0_8px_20px_rgba(16,185,129,0.25)] hover:-translate-y-0.5 active:translate-y-0"
               >
                 <MessageSquare className="w-4 h-4" />
@@ -85,6 +194,7 @@ export default function Contact() {
               <a
                 id="contact-call-btn"
                 href={`tel:${siteConfig.phone.replace(/\s+/g, '')}`}
+                onClick={handleActionWithRateLimit}
                 className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-5 py-3.5 rounded-full bg-white hover:bg-zinc-50 text-zinc-900 font-semibold text-[14.5px] border border-zinc-200 hover:border-zinc-300 transition-all duration-200 shadow-xs hover:-translate-y-0.5 active:translate-y-0"
               >
                 <Phone className="w-4 h-4 text-emerald-600" />
@@ -95,6 +205,7 @@ export default function Contact() {
               <a
                 id="contact-email-btn"
                 href={`mailto:${siteConfig.email}?subject=Project%20Inquiry%20from%20Portfolio`}
+                onClick={handleActionWithRateLimit}
                 className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-5 py-3.5 rounded-full bg-white hover:bg-zinc-50 text-zinc-900 font-semibold text-[14.5px] border border-zinc-200 hover:border-zinc-300 transition-all duration-200 shadow-xs hover:-translate-y-0.5 active:translate-y-0"
               >
                 <Mail className="w-4 h-4 text-zinc-500" />
@@ -108,6 +219,7 @@ export default function Contact() {
                   href={siteConfig.socials.instagram}
                   target="_blank"
                   rel="noopener noreferrer"
+                  onClick={handleActionWithRateLimit}
                   className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-5 py-3.5 rounded-full bg-white hover:bg-zinc-50 text-zinc-900 font-semibold text-[14.5px] border border-zinc-200 hover:border-zinc-300 transition-all duration-200 shadow-xs hover:-translate-y-0.5 active:translate-y-0"
                 >
                   <Instagram className="w-4 h-4 text-pink-600" />
@@ -116,6 +228,108 @@ export default function Contact() {
                 </a>
               )}
 
+            </div>
+
+            {/* Quick Instant Project Message Composer with Anti-Spam & Rate-Limiting */}
+            <div className="pt-6 text-left max-w-xl mx-auto">
+              <div className="p-5 sm:p-6 rounded-2xl bg-white border border-zinc-200/90 shadow-xs space-y-4">
+                <div className="flex items-center justify-between border-b border-zinc-100 pb-3">
+                  <div>
+                    <h3 className="text-sm font-bold text-zinc-900">Direct Project Dispatch</h3>
+                    <p className="text-xs text-zinc-500">Send brief project details straight to WhatsApp or Email</p>
+                  </div>
+                  <span className="text-[10px] font-semibold text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded-full border border-emerald-200/60">
+                    Spam Protected
+                  </span>
+                </div>
+
+                <form className="space-y-3" onSubmit={(e) => e.preventDefault()}>
+                  {/* Invisible Honeypot to trap automated bots */}
+                  <div className="hidden" aria-hidden="true">
+                    <input 
+                      type="text" 
+                      name="website_antispam_hp" 
+                      tabIndex={-1} 
+                      value={honeypot} 
+                      onChange={(e) => setHoneypot(e.target.value)} 
+                      autoComplete="off" 
+                    />
+                  </div>
+
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
+                    <div>
+                      <label htmlFor="inquiry-name" className="block text-[11px] font-semibold text-zinc-600 mb-1">
+                        Your Name
+                      </label>
+                      <input 
+                        id="inquiry-name"
+                        type="text"
+                        placeholder="e.g. Rahul Sharma"
+                        value={senderName}
+                        onChange={(e) => setSenderName(e.target.value)}
+                        maxLength={60}
+                        className="w-full px-3 py-2 text-xs rounded-xl bg-zinc-50 border border-zinc-200 focus:bg-white focus:outline-none focus:ring-2 focus:ring-emerald-500/30 focus:border-emerald-500 transition-all text-zinc-900"
+                      />
+                    </div>
+
+                    <div>
+                      <label htmlFor="inquiry-type" className="block text-[11px] font-semibold text-zinc-600 mb-1">
+                        Project Category
+                      </label>
+                      <select
+                        id="inquiry-type"
+                        value={projectType}
+                        onChange={(e) => setProjectType(e.target.value)}
+                        className="w-full px-3 py-2 text-xs rounded-xl bg-zinc-50 border border-zinc-200 focus:bg-white focus:outline-none focus:ring-2 focus:ring-emerald-500/30 focus:border-emerald-500 transition-all text-zinc-900"
+                      >
+                        <option value="Website Builder / Business Site">Website Builder (Fast &amp; Affordable)</option>
+                        <option value="Full-Stack Web Application">Full-Stack Web Application</option>
+                        <option value="Android / Mobile App">Android / Mobile App</option>
+                        <option value="E-Commerce Store">E-Commerce Store</option>
+                        <option value="Custom Automation / Scripts">Custom Automation / Scripts</option>
+                        <option value="Cybersecurity / Code Audit">Cybersecurity / Code Audit</option>
+                      </select>
+                    </div>
+                  </div>
+
+                  <div>
+                    <label htmlFor="inquiry-msg" className="block text-[11px] font-semibold text-zinc-600 mb-1">
+                      Project Notes / Budget / Timeline
+                    </label>
+                    <textarea 
+                      id="inquiry-msg"
+                      rows={2}
+                      placeholder="Briefly describe what you'd like to build..."
+                      value={inquiryMessage}
+                      onChange={(e) => setInquiryMessage(e.target.value)}
+                      maxLength={500}
+                      className="w-full px-3 py-2 text-xs rounded-xl bg-zinc-50 border border-zinc-200 focus:bg-white focus:outline-none focus:ring-2 focus:ring-emerald-500/30 focus:border-emerald-500 transition-all text-zinc-900 resize-none"
+                    />
+                  </div>
+
+                  <div className="flex flex-col sm:flex-row items-center gap-2 pt-1">
+                    <button
+                      type="button"
+                      id="inquiry-submit-whatsapp"
+                      onClick={(e) => handleQuickInquirySubmit(e, 'whatsapp')}
+                      className="w-full sm:flex-1 inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-semibold shadow-xs transition-all active:scale-[0.98]"
+                    >
+                      <MessageSquare className="w-3.5 h-3.5" />
+                      <span>Send via WhatsApp</span>
+                    </button>
+
+                    <button
+                      type="button"
+                      id="inquiry-submit-email"
+                      onClick={(e) => handleQuickInquirySubmit(e, 'email')}
+                      className="w-full sm:flex-1 inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl bg-zinc-900 hover:bg-zinc-800 text-white text-xs font-semibold shadow-xs transition-all active:scale-[0.98]"
+                    >
+                      <Send className="w-3.5 h-3.5" />
+                      <span>Send via Email</span>
+                    </button>
+                  </div>
+                </form>
+              </div>
             </div>
 
             {/* Quick Contact Details & Copy to Clipboard (3-column responsive) */}

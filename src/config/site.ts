@@ -16,6 +16,7 @@ export interface SocialLink {
 
 export interface SiteConfig {
   name: string;
+  domain: string;
   role: string;
   age: number;
   location: string;
@@ -60,11 +61,15 @@ export interface SiteConfig {
 
   // Quick navigation items
   navLinks: Array<{ label: string; href: string }>;
+
+  // Specialized SEO service pages
+  servicePages: Array<{ label: string; href: string; description: string }>;
 }
 
 export const siteConfig: SiteConfig = {
   // Your Name & Details
   name: "Gaurav Beniwal",
+  domain: "https://gauravbeniwal.online",
   role: "Full-Stack Developer, App & Website Builder",
   age: 18,
   location: "Panipat & Samalkha, Haryana, India",
@@ -114,9 +119,39 @@ export const siteConfig: SiteConfig = {
   navLinks: [
     { label: "Home", href: "#hero" },
     { label: "About", href: "#about" },
+    { label: "Services", href: "/services" },
     { label: "What I Build", href: "#what-i-build" },
     { label: "Projects", href: "#projects" },
     { label: "Experience", href: "#experience" },
     { label: "Contact", href: "#contact" },
+  ],
+
+  // Specialized SEO Service Landing Pages
+  servicePages: [
+    { 
+      label: "Website Builder Panipat", 
+      href: "/services/website-builder-panipat",
+      description: "Fast, SEO-optimized business websites starting ₹4,999"
+    },
+    { 
+      label: "Mobile App Development", 
+      href: "/services/app-development",
+      description: "Custom Android & iOS apps with React Native & Flutter"
+    },
+    { 
+      label: "Cybersecurity & Pentesting", 
+      href: "/services/cybersecurity-audit",
+      description: "OWASP vulnerability audit, anti-DDoS & server hardening"
+    },
+    { 
+      label: "E-Commerce Store Builder", 
+      href: "/services/ecommerce-development",
+      description: "Textile & retail online stores with UPI payment gateways"
+    },
+    { 
+      label: "Business Automation & ERP", 
+      href: "/services/business-automation",
+      description: "WhatsApp CRM bots, Excel to Web & factory software"
+    },
   ],
 };

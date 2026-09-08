@@ -151,6 +151,8 @@ export default function Hero() {
                   alt="Gaurav Beniwal — Developer & Digital Product Builder"
                   className="w-full h-full object-cover object-center transition-transform duration-700 ease-out hover:scale-105"
                   loading="eager"
+                  fetchPriority="high"
+                  decoding="async"
                 />
 
                 {/* Subtle bottom lighting overlay to blend the text nicely */}
