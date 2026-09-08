@@ -1,0 +1,83 @@
+# ====================================================================
+# Apache Configuration for InfinityFree & Static Web Hosting
+# Configured for Gaurav Beniwal Portfolio (Single Page Application)
+# ====================================================================
+
+# 1. Force explicit JavaScript & CSS MIME Types
+# (Fixes "Failed to load module script: MIME type of ''" on InfinityFree / Apache)
+<IfModule mod_mime.c>
+  AddType application/javascript .js .mjs
+  AddType text/javascript .js .mjs
+  AddType text/css .css
+  AddType image/svg+xml .svg
+  AddType image/webp .webp
+  AddType image/png .png
+  AddType image/jpeg .jpg .jpeg
+  AddType image/x-icon .ico
+  AddType application/json .json
+  AddType font/woff2 .woff2
+  AddType font/woff .woff
+  AddType font/ttf .ttf
+</IfModule>
+
+# 2. Force Content-Type headers explicitly for all script and style files
+<FilesMatch "\.(js|mjs)$">
+  ForceType application/javascript
+  <IfModule mod_headers.c>
+    Header set Content-Type "application/javascript; charset=utf-8"
+  </IfModule>
+</FilesMatch>
+
+<FilesMatch "\.css$">
+  ForceType text/css
+  <IfModule mod_headers.c>
+    Header set Content-Type "text/css; charset=utf-8"
+  </IfModule>
+</FilesMatch>
+
+# 3. Single Page Application (SPA) Routing
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteBase /
+  
+  # If requested file or directory exists physically, serve it directly
+  RewriteCond %{REQUEST_FILENAME} -f [OR]
+  RewriteCond %{REQUEST_FILENAME} -d
+  RewriteRule ^ - [L]
+
+  # CRITICAL: NEVER rewrite static assets (.js, .css, images, fonts) to index.html!
+  # If an asset request is missing or redirected, rewriting it to index.html causes
+  # the browser to receive HTML instead of JS, triggering strict MIME rejection.
+  RewriteCond %{REQUEST_URI} !\.(js|mjs|css|png|jpg|jpeg|gif|ico|svg|webp|woff|woff2|ttf|eot|json|map)$ [NC]
+  RewriteRule ^ index.html [L]
+</IfModule>
+
+# 4. Gzip/Deflate Compression for maximum Google PageSpeed
+<IfModule mod_deflate.c>
+  AddOutputFilterByType DEFLATE text/html
+  AddOutputFilterByType DEFLATE text/plain
+  AddOutputFilterByType DEFLATE text/xml
+  AddOutputFilterByType DEFLATE text/css
+  AddOutputFilterByType DEFLATE text/javascript
+  AddOutputFilterByType DEFLATE application/javascript
+  AddOutputFilterByType DEFLATE application/x-javascript
+  AddOutputFilterByType DEFLATE application/json
+  AddOutputFilterByType DEFLATE application/xml
+  AddOutputFilterByType DEFLATE image/svg+xml
+</IfModule>
+
+# 5. Browser Caching Headers
+<IfModule mod_expires.c>
+  ExpiresActive On
+  ExpiresDefault "access plus 1 month"
+
+  ExpiresByType text/html "access plus 0 seconds"
+  ExpiresByType text/css "access plus 1 year"
+  ExpiresByType text/javascript "access plus 1 year"
+  ExpiresByType application/javascript "access plus 1 year"
+  ExpiresByType image/webp "access plus 1 year"
+  ExpiresByType image/jpeg "access plus 1 year"
+  ExpiresByType image/png "access plus 1 year"
+  ExpiresByType image/svg+xml "access plus 1 year"
+  ExpiresByType image/x-icon "access plus 1 year"
+</IfModule>

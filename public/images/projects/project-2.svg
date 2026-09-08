@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" width="100%" height="100%">
+  <defs>
+    <linearGradient id="p2bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#f8fafc" />
+      <stop offset="100%" stop-color="#f1f5f9" />
+    </linearGradient>
+  </defs>
+  <rect width="800" height="600" fill="url(#p2bg)"/>
+  <g transform="translate(60, 50)">
+    <!-- Main interface panel -->
+    <rect width="680" height="500" rx="14" fill="#ffffff" stroke="#e2e8f0" stroke-width="1.5" filter="drop-shadow(0 15px 25px rgba(0,0,0,0.04))"/>
+    <rect width="680" height="42" rx="14" fill="#f8fafc"/>
+    <line x1="0" y1="42" x2="680" y2="42" stroke="#e2e8f0" stroke-width="1.5"/>
+    <circle cx="24" cy="21" r="5" fill="#94a3b8" opacity="0.6"/>
+    <circle cx="40" cy="21" r="5" fill="#94a3b8" opacity="0.6"/>
+    <circle cx="56" cy="21" r="5" fill="#94a3b8" opacity="0.6"/>
+    
+    <!-- Code / Automation Terminal style view -->
+    <rect x="30" y="65" width="620" height="400" rx="8" fill="#09090b"/>
+    <!-- Terminal header -->
+    <circle cx="50" cy="85" r="4" fill="#ef4444"/>
+    <circle cx="65" cy="85" r="4" fill="#f59e0b"/>
+    <circle cx="80" cy="85" r="4" fill="#10b981"/>
+    
+    <!-- Code lines -->
+    <text x="50" y="130" font-family="monospace" font-size="13" fill="#10b981">$ workflow-daemon --service=realtime-sync</text>
+    <text x="50" y="165" font-family="monospace" font-size="13" fill="#38bdf8">✓ Connected to cluster: 8 worker instances</text>
+    <text x="50" y="200" font-family="monospace" font-size="13" fill="#e2e8f0">Executing task: data pipeline aggregation...</text>
+    <text x="50" y="235" font-family="monospace" font-size="13" fill="#10b981">● Automated trigger passed (latency: 18ms)</text>
+    
+    <rect x="50" y="270" width="400" height="8" rx="4" fill="#27272a"/>
+    <rect x="50" y="270" width="310" height="8" rx="4" fill="#10b981"/>
+    <text x="470" y="278" font-family="monospace" font-size="12" fill="#a1a1aa">78%</text>
+
+    <!-- Stat boxes in terminal -->
+    <rect x="50" y="320" width="160" height="70" rx="6" fill="#18181b" stroke="#27272a"/>
+    <text x="65" y="345" font-family="monospace" font-size="11" fill="#71717a">JOBS COMPLETED</text>
+    <text x="65" y="372" font-family="monospace" font-size="18" font-weight="bold" fill="#ffffff">124,800</text>
+
+    <rect x="230" y="320" width="160" height="70" rx="6" fill="#18181b" stroke="#27272a"/>
+    <text x="245" y="345" font-family="monospace" font-size="11" fill="#71717a">AVG RUNTIME</text>
+    <text x="245" y="372" font-family="monospace" font-size="18" font-weight="bold" fill="#10b981">42ms</text>
+  </g>
+</svg>

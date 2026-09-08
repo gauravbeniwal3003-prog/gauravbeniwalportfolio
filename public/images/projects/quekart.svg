@@ -1,0 +1,169 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 750" width="100%" height="100%">
+  <defs>
+    <linearGradient id="qkBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#fffbeb" />
+      <stop offset="100%" stop-color="#f8fafc" />
+    </linearGradient>
+    <linearGradient id="dealGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#f97316" />
+      <stop offset="100%" stop-color="#fb923c" />
+    </linearGradient>
+    <linearGradient id="cardGradQk" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ffffff" />
+      <stop offset="100%" stop-color="#fafafa" />
+    </linearGradient>
+  </defs>
+
+  <rect width="1200" height="750" fill="url(#qkBg)"/>
+
+  <!-- Browser Frame -->
+  <g transform="translate(60, 50)">
+    <rect width="1080" height="650" rx="18" fill="#ffffff" stroke="#e2e8f0" stroke-width="1.5" filter="drop-shadow(0 25px 35px rgba(0,0,0,0.06))"/>
+    
+    <!-- Window Bar -->
+    <rect width="1080" height="46" rx="18" fill="#f8fafc"/>
+    <line x1="0" y1="46" x2="1080" y2="46" stroke="#e2e8f0" stroke-width="1"/>
+    <circle cx="28" cy="23" r="5.5" fill="#f87171" opacity="0.8"/>
+    <circle cx="48" cy="23" r="5.5" fill="#fbbf24" opacity="0.8"/>
+    <circle cx="68" cy="23" r="5.5" fill="#34d399" opacity="0.8"/>
+    
+    <!-- Address Bar -->
+    <rect x="240" y="9" width="600" height="28" rx="8" fill="#ffffff" stroke="#e2e8f0" stroke-width="1"/>
+    <text x="540" y="27" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" fill="#64748b" text-anchor="middle" font-weight="500">
+      🔒 https://www.quekart.in
+    </text>
+
+    <!-- Marketplace Header -->
+    <rect x="0" y="46" width="1080" height="68" fill="#ffffff"/>
+    <line x1="0" y1="114" x2="1080" y2="114" stroke="#f1f5f9" stroke-width="1.5"/>
+    
+    <!-- Logo -->
+    <text x="35" y="88" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="22" font-weight="900" fill="#0f172a">
+      QueKart<tspan fill="#f97316">™</tspan>
+    </text>
+    
+    <!-- Search Bar -->
+    <rect x="190" y="60" width="560" height="40" rx="20" fill="#f8fafc" stroke="#e2e8f0"/>
+    <text x="215" y="85" font-family="sans-serif" font-size="13" fill="#94a3b8">Search 50,000+ Factory Wholesale Products &amp; Direct Deals...</text>
+    <rect x="675" y="64" width="70" height="32" rx="16" fill="#f97316"/>
+    <text x="710" y="84" font-family="sans-serif" font-size="11" font-weight="700" fill="#ffffff" text-anchor="middle">Search</text>
+
+    <!-- Header Actions -->
+    <text x="810" y="85" font-family="sans-serif" font-size="13" font-weight="600" fill="#334155">Direct Factory</text>
+    <text x="920" y="85" font-family="sans-serif" font-size="13" font-weight="600" fill="#334155">Download App</text>
+    
+    <!-- Cart Pill -->
+    <rect x="1000" y="63" width="50" height="34" rx="8" fill="#fff7ed" stroke="#fed7aa"/>
+    <text x="1025" y="84" font-family="sans-serif" font-size="12" font-weight="700" fill="#c2410c" text-anchor="middle">🛒 3</text>
+
+    <!-- Category Bar -->
+    <rect x="0" y="114" width="1080" height="40" fill="#fafafa"/>
+    <line x1="0" y1="154" x2="1080" y2="154" stroke="#f1f5f9" stroke-width="1"/>
+    <text x="40" y="139" font-family="sans-serif" font-size="12" font-weight="700" fill="#ea580c">All Categories ▾</text>
+    <text x="170" y="139" font-family="sans-serif" font-size="12" font-weight="500" fill="#475569">Consumer Electronics</text>
+    <text x="330" y="139" font-family="sans-serif" font-size="12" font-weight="500" fill="#475569">Fashion &amp; Apparel</text>
+    <text x="470" y="139" font-family="sans-serif" font-size="12" font-weight="500" fill="#475569">Home &amp; Kitchen</text>
+    <text x="600" y="139" font-family="sans-serif" font-size="12" font-weight="500" fill="#475569">Beauty &amp; Health</text>
+    <text x="730" y="139" font-family="sans-serif" font-size="12" font-weight="500" fill="#475569">Smart Watches</text>
+    <text x="960" y="139" font-family="sans-serif" font-size="12" font-weight="700" fill="#16a34a">⚡ Lowest Price Guaranteed</text>
+
+    <!-- Wholesale Promotional Hero Banner -->
+    <g transform="translate(35, 170)">
+      <rect width="1010" height="135" rx="14" fill="url(#dealGrad)"/>
+      <rect x="25" y="20" width="140" height="22" rx="6" fill="#ffffff" opacity="0.9"/>
+      <text x="95" y="35" font-family="sans-serif" font-size="10" font-weight="800" fill="#c2410c" text-anchor="middle" letter-spacing="0.5">DIRECT FROM MANUFACTURER</text>
+      
+      <text x="25" y="78" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="25" font-weight="900" fill="#ffffff">
+        India's #1 Direct Factory Wholesale Online Shopping
+      </text>
+      <text x="25" y="105" font-family="sans-serif" font-size="13" font-weight="500" fill="#fff7ed">
+        Zero Middlemen Margins • Cash on Delivery Available • Free Shipping Nationwide
+      </text>
+    </g>
+
+    <!-- Product Grid -->
+    <g transform="translate(35, 325)">
+      <text x="0" y="20" font-family="sans-serif" font-size="16" font-weight="800" fill="#0f172a">Today's Wholesale Steal Deals</text>
+      <text x="940" y="20" font-family="sans-serif" font-size="12" font-weight="600" fill="#ea580c">See 2,400+ Deals →</text>
+
+      <!-- 4 Compact Wholesale Product Cards -->
+      <!-- Product 1 -->
+      <g transform="translate(0, 35)">
+        <rect width="235" height="230" rx="12" fill="url(#cardGradQk)" stroke="#e2e8f0"/>
+        <rect x="12" y="12" width="211" height="110" rx="8" fill="#f1f5f9"/>
+        <rect x="20" y="20" width="45" height="18" rx="4" fill="#ef4444"/>
+        <text x="42" y="32" font-family="sans-serif" font-size="9" font-weight="800" fill="#ffffff" text-anchor="middle">75% OFF</text>
+        <circle cx="117" cy="65" r="28" fill="#cbd5e1" opacity="0.5"/>
+        <text x="117" y="70" font-family="sans-serif" font-size="16" text-anchor="middle">🎧</text>
+        
+        <text x="15" y="142" font-family="sans-serif" font-size="12" font-weight="700" fill="#0f172a">TWS Earbuds Pro ANC</text>
+        <text x="15" y="160" font-family="sans-serif" font-size="10" fill="#64748b">Factory Direct • 48h Battery</text>
+        
+        <text x="15" y="185" font-family="sans-serif" font-size="16" font-weight="800" fill="#ea580c">₹349</text>
+        <text x="65" y="185" font-family="sans-serif" font-size="11" fill="#94a3b8" text-decoration="line-through">₹1,499</text>
+
+        <rect x="15" y="196" width="205" height="24" rx="6" fill="#0f172a"/>
+        <text x="117" y="212" font-family="sans-serif" font-size="10" font-weight="700" fill="#ffffff" text-anchor="middle">Buy Wholesale</text>
+      </g>
+
+      <!-- Product 2 -->
+      <g transform="translate(258, 35)">
+        <rect width="235" height="230" rx="12" fill="url(#cardGradQk)" stroke="#e2e8f0"/>
+        <rect x="12" y="12" width="211" height="110" rx="8" fill="#f1f5f9"/>
+        <rect x="20" y="20" width="45" height="18" rx="4" fill="#ef4444"/>
+        <text x="42" y="32" font-family="sans-serif" font-size="9" font-weight="800" fill="#ffffff" text-anchor="middle">60% OFF</text>
+        <circle cx="117" cy="65" r="28" fill="#cbd5e1" opacity="0.5"/>
+        <text x="117" y="70" font-family="sans-serif" font-size="16" text-anchor="middle">⌚</text>
+        
+        <text x="15" y="142" font-family="sans-serif" font-size="12" font-weight="700" fill="#0f172a">AMOLED Smart Watch</text>
+        <text x="15" y="160" font-family="sans-serif" font-size="10" fill="#64748b">Calling &amp; Health Sensors</text>
+        
+        <text x="15" y="185" font-family="sans-serif" font-size="16" font-weight="800" fill="#ea580c">₹799</text>
+        <text x="65" y="185" font-family="sans-serif" font-size="11" fill="#94a3b8" text-decoration="line-through">₹1,999</text>
+
+        <rect x="15" y="196" width="205" height="24" rx="6" fill="#0f172a"/>
+        <text x="117" y="212" font-family="sans-serif" font-size="10" font-weight="700" fill="#ffffff" text-anchor="middle">Buy Wholesale</text>
+      </g>
+
+      <!-- Product 3 -->
+      <g transform="translate(516, 35)">
+        <rect width="235" height="230" rx="12" fill="url(#cardGradQk)" stroke="#e2e8f0"/>
+        <rect x="12" y="12" width="211" height="110" rx="8" fill="#f1f5f9"/>
+        <rect x="20" y="20" width="45" height="18" rx="4" fill="#16a34a"/>
+        <text x="42" y="32" font-family="sans-serif" font-size="9" font-weight="800" fill="#ffffff" text-anchor="middle">HOT</text>
+        <circle cx="117" cy="65" r="28" fill="#cbd5e1" opacity="0.5"/>
+        <text x="117" y="70" font-family="sans-serif" font-size="16" text-anchor="middle">👕</text>
+        
+        <text x="15" y="142" font-family="sans-serif" font-size="12" font-weight="700" fill="#0f172a">Cotton Oversized T-Shirt</text>
+        <text x="15" y="160" font-family="sans-serif" font-size="10" fill="#64748b">Pack of 3 • 240 GSM Fabric</text>
+        
+        <text x="15" y="185" font-family="sans-serif" font-size="16" font-weight="800" fill="#ea580c">₹549</text>
+        <text x="65" y="185" font-family="sans-serif" font-size="11" fill="#94a3b8" text-decoration="line-through">₹1,299</text>
+
+        <rect x="15" y="196" width="205" height="24" rx="6" fill="#0f172a"/>
+        <text x="117" y="212" font-family="sans-serif" font-size="10" font-weight="700" fill="#ffffff" text-anchor="middle">Buy Wholesale</text>
+      </g>
+
+      <!-- Product 4 -->
+      <g transform="translate(774, 35)">
+        <rect width="235" height="230" rx="12" fill="url(#cardGradQk)" stroke="#e2e8f0"/>
+        <rect x="12" y="12" width="211" height="110" rx="8" fill="#f1f5f9"/>
+        <rect x="20" y="20" width="45" height="18" rx="4" fill="#ef4444"/>
+        <text x="42" y="32" font-family="sans-serif" font-size="9" font-weight="800" fill="#ffffff" text-anchor="middle">80% OFF</text>
+        <circle cx="117" cy="65" r="28" fill="#cbd5e1" opacity="0.5"/>
+        <text x="117" y="70" font-family="sans-serif" font-size="16" text-anchor="middle">💡</text>
+        
+        <text x="15" y="142" font-family="sans-serif" font-size="12" font-weight="700" fill="#0f172a">LED Sunset Projection Lamp</text>
+        <text x="15" y="160" font-family="sans-serif" font-size="10" fill="#64748b">16 Colors • Remote Control</text>
+        
+        <text x="15" y="185" font-family="sans-serif" font-size="16" font-weight="800" fill="#ea580c">₹249</text>
+        <text x="65" y="185" font-family="sans-serif" font-size="11" fill="#94a3b8" text-decoration="line-through">₹999</text>
+
+        <rect x="15" y="196" width="205" height="24" rx="6" fill="#0f172a"/>
+        <text x="117" y="212" font-family="sans-serif" font-size="10" font-weight="700" fill="#ffffff" text-anchor="middle">Buy Wholesale</text>
+      </g>
+
+    </g>
+
+  </g>
+</svg>

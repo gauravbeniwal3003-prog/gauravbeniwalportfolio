@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 750" width="100%" height="100%">
+  <defs>
+    <linearGradient id="p1bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#fafafa" />
+      <stop offset="100%" stop-color="#f4f4f5" />
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="750" fill="url(#p1bg)"/>
+  <!-- App Window Frame -->
+  <g transform="translate(80, 70)">
+    <rect width="1040" height="610" rx="16" fill="#ffffff" stroke="#e4e4e7" stroke-width="1.5" filter="drop-shadow(0 20px 25px rgba(0,0,0,0.05))"/>
+    <!-- Top Window bar -->
+    <rect width="1040" height="48" rx="16" fill="#fcfcfc"/>
+    <line x1="0" y1="48" x2="1040" y2="48" stroke="#f4f4f5" stroke-width="1.5"/>
+    <circle cx="28" cy="24" r="6" fill="#ef4444" opacity="0.6"/>
+    <circle cx="48" cy="24" r="6" fill="#f59e0b" opacity="0.6"/>
+    <circle cx="68" cy="24" r="6" fill="#10b981" opacity="0.6"/>
+    
+    <!-- Sidebar -->
+    <rect x="0" y="48" width="220" height="562" fill="#fafafa"/>
+    <line x1="220" y1="48" x2="220" y2="610" stroke="#f4f4f5" stroke-width="1.5"/>
+    <rect x="24" y="80" width="140" height="14" rx="7" fill="#10b981" opacity="0.8"/>
+    <rect x="24" y="120" width="160" height="10" rx="5" fill="#d4d4d8"/>
+    <rect x="24" y="145" width="130" height="10" rx="5" fill="#e4e4e7"/>
+    <rect x="24" y="170" width="150" height="10" rx="5" fill="#e4e4e7"/>
+    <rect x="24" y="195" width="120" height="10" rx="5" fill="#e4e4e7"/>
+    
+    <!-- Main Content Area -->
+    <rect x="260" y="80" width="260" height="24" rx="6" fill="#18181b"/>
+    <rect x="260" y="120" width="480" height="12" rx="6" fill="#a1a1aa"/>
+    
+    <!-- Dashboard Cards -->
+    <rect x="260" y="160" width="220" height="120" rx="12" fill="#f9fafb" stroke="#e4e4e7"/>
+    <circle cx="290" cy="190" r="14" fill="#10b981" opacity="0.15"/>
+    <rect x="280" y="225" width="90" height="18" rx="4" fill="#18181b"/>
+    <rect x="280" y="252" width="140" height="10" rx="4" fill="#a1a1aa"/>
+    
+    <rect x="510" y="160" width="220" height="120" rx="12" fill="#f9fafb" stroke="#e4e4e7"/>
+    <circle cx="540" cy="190" r="14" fill="#3b82f6" opacity="0.15"/>
+    <rect x="530" y="225" width="110" height="18" rx="4" fill="#18181b"/>
+    <rect x="530" y="252" width="130" height="10" rx="4" fill="#a1a1aa"/>
+    
+    <rect x="760" y="160" width="240" height="120" rx="12" fill="#f9fafb" stroke="#e4e4e7"/>
+    <circle cx="790" cy="190" r="14" fill="#8b5cf6" opacity="0.15"/>
+    <rect x="780" y="225" width="80" height="18" rx="4" fill="#18181b"/>
+    <rect x="780" y="252" width="120" height="10" rx="4" fill="#a1a1aa"/>
+    
+    <!-- Chart Preview -->
+    <rect x="260" y="310" width="740" height="250" rx="12" fill="#ffffff" stroke="#e4e4e7"/>
+    <path d="M 300 480 Q 420 400, 520 440 T 740 370 T 940 350" fill="none" stroke="#10b981" stroke-width="3"/>
+    <path d="M 300 480 Q 420 400, 520 440 T 740 370 T 940 350 L 940 520 L 300 520 Z" fill="#10b981" opacity="0.08"/>
+  </g>
+</svg>

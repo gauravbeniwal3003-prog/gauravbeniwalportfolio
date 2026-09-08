@@ -1,0 +1,162 @@
+@import "tailwindcss";
+
+/**
+ * =========================================================================
+ * 🎨 THEME VARIABLES & SYSTEM TOKENS — GAURAV BENIWAL PORTFOLIO
+ * =========================================================================
+ * You can modify these CSS variables at any time to adjust the entire 
+ * color scheme of the website.
+ */
+:root {
+  /* Canvas & Neutral Backdrops */
+  --background: #ffffff;
+  --background-subtle: #fcfcfd;
+  --background-card: #ffffff;
+  
+  /* Typography */
+  --foreground: #09090b;       /* Dark charcoal / near-black */
+  --foreground-muted: #52525b; /* Balanced secondary text */
+  --muted: #71717a;            /* Light muted gray */
+  --muted-subtle: #a1a1aa;     /* Extra subtle captions */
+
+  /* Primary Brand Action (Professional Green) */
+  --primary: #10b981;          /* Emerald / professional vibrant green */
+  --primary-hover: #059669;    /* Darker shade on hover */
+  --primary-light: #ecfdf5;    /* 5% tint for badges/accents */
+  --primary-foreground: #ffffff;
+  --primary-ring: rgba(16, 185, 129, 0.25);
+
+  /* Subtle Borders & Dividers */
+  --border: #e4e4e7;
+  --border-subtle: #f4f4f5;
+  --border-glass: rgba(228, 228, 231, 0.65);
+
+  /* Liquid Glass Surfaces */
+  --glass-bg: rgba(255, 255, 255, 0.72);
+  --glass-bg-hover: rgba(255, 255, 255, 0.88);
+  --glass-card-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.03), 0 2px 6px -1px rgba(0, 0, 0, 0.02);
+  --glass-card-shadow-hover: 0 16px 36px -4px rgba(0, 0, 0, 0.07), 0 4px 12px -2px rgba(0, 0, 0, 0.03);
+}
+
+/* Set global font */
+body {
+  font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  background-color: var(--background);
+  color: var(--foreground);
+  overflow-x: hidden;
+}
+
+/* Custom Utilities for Liquid Glassmorphism */
+.glass-panel {
+  background: var(--glass-bg);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid var(--border-glass);
+  box-shadow: var(--glass-card-shadow);
+}
+
+.glass-card {
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--border);
+  box-shadow: var(--glass-card-shadow);
+  transition: transform 0.28s cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 0.28s cubic-bezier(0.16, 1, 0.3, 1),
+              border-color 0.28s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.glass-card:hover {
+  border-color: rgba(16, 185, 129, 0.4);
+  box-shadow: var(--glass-card-shadow-hover);
+}
+
+.glass-pill {
+  background: rgba(255, 255, 255, 0.75);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid var(--border);
+  transition: all 0.2s ease;
+}
+
+.glass-pill:hover {
+  background: #ffffff;
+  border-color: rgba(16, 185, 129, 0.5);
+  transform: translateY(-1px);
+}
+
+/* Subtle Breathing & Floating Animations for Profile & Cards */
+@keyframes profileBreath {
+  0%, 100% {
+    transform: translateY(0px) scale(1);
+  }
+  50% {
+    transform: translateY(-6px) scale(1.015);
+  }
+}
+
+@keyframes floatCardSlow {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-5px);
+  }
+}
+
+@keyframes floatCardDelayed {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(6px);
+  }
+}
+
+@keyframes signalPulse {
+  0%, 100% {
+    opacity: 0.6;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.25);
+  }
+}
+
+.animate-profile-breath {
+  animation: profileBreath 9s ease-in-out infinite;
+  will-change: transform;
+}
+
+.animate-float-slow {
+  animation: floatCardSlow 6s ease-in-out infinite;
+  will-change: transform;
+}
+
+.animate-float-delayed {
+  animation: floatCardDelayed 7s ease-in-out infinite 1.5s;
+  will-change: transform;
+}
+
+.animate-signal-pulse {
+  animation: signalPulse 2.4s ease-in-out infinite;
+}
+
+/* Accessibility: Respect Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  ::before,
+  ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  .animate-profile-breath,
+  .animate-float-slow,
+  .animate-float-delayed,
+  .animate-signal-pulse {
+    animation: none !important;
+  }
+}

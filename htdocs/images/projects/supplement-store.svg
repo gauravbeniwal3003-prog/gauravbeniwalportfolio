@@ -1,0 +1,134 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 750" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bgGrad1" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#f8fafc" />
+      <stop offset="100%" stop-color="#f1f5f9" />
+    </linearGradient>
+    <linearGradient id="cardGrad1" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ffffff" />
+      <stop offset="100%" stop-color="#fafafa" />
+    </linearGradient>
+    <linearGradient id="badgeGrad1" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#059669" />
+      <stop offset="100%" stop-color="#10b981" />
+    </linearGradient>
+  </defs>
+
+  <rect width="1200" height="750" fill="url(#bgGrad1)"/>
+
+  <!-- Browser Frame -->
+  <g transform="translate(60, 50)">
+    <rect width="1080" height="650" rx="18" fill="#ffffff" stroke="#e2e8f0" stroke-width="1.5" filter="drop-shadow(0 25px 35px rgba(0,0,0,0.06))"/>
+    
+    <!-- Window Bar -->
+    <rect width="1080" height="46" rx="18" fill="#f8fafc"/>
+    <line x1="0" y1="46" x2="1080" y2="46" stroke="#e2e8f0" stroke-width="1"/>
+    <circle cx="28" cy="23" r="5.5" fill="#f87171" opacity="0.8"/>
+    <circle cx="48" cy="23" r="5.5" fill="#fbbf24" opacity="0.8"/>
+    <circle cx="68" cy="23" r="5.5" fill="#34d399" opacity="0.8"/>
+    
+    <!-- Address Bar -->
+    <rect x="240" y="9" width="600" height="28" rx="8" fill="#ffffff" stroke="#e2e8f0" stroke-width="1"/>
+    <text x="540" y="27" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" fill="#64748b" text-anchor="middle" font-weight="500">
+      🔒 https://xyzsupplement.netlify.app
+    </text>
+
+    <!-- Store Navigation Bar -->
+    <rect x="0" y="46" width="1080" height="60" fill="#ffffff"/>
+    <line x1="0" y1="106" x2="1080" y2="106" stroke="#f1f5f9" stroke-width="1.5"/>
+    <text x="40" y="83" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="18" font-weight="800" fill="#0f172a" letter-spacing="0.5">
+      XYZ SUPPLEMENTS<tspan fill="#10b981">.</tspan>
+    </text>
+    
+    <!-- Nav Pills -->
+    <rect x="250" y="68" width="80" height="28" rx="6" fill="#ecfdf5"/>
+    <text x="290" y="86" font-family="sans-serif" font-size="12" font-weight="600" fill="#065f46" text-anchor="middle">Whey Protein</text>
+    
+    <text x="380" y="86" font-family="sans-serif" font-size="12" font-weight="500" fill="#64748b">Creatine</text>
+    <text x="460" y="86" font-family="sans-serif" font-size="12" font-weight="500" fill="#64748b">Pre-Workout</text>
+    <text x="560" y="86" font-family="sans-serif" font-size="12" font-weight="500" fill="#64748b">Vitamins &amp; BCAAs</text>
+
+    <!-- Cart Button -->
+    <rect x="940" y="64" width="100" height="34" rx="8" fill="#0f172a"/>
+    <text x="980" y="85" font-family="sans-serif" font-size="12" font-weight="600" fill="#ffffff">Cart (2)</text>
+    <circle cx="1025" cy="81" r="7" fill="#10b981"/>
+    <text x="1025" y="85" font-family="sans-serif" font-size="10" font-weight="700" fill="#ffffff" text-anchor="middle">2</text>
+
+    <!-- Hero Banner Promo -->
+    <rect x="40" y="125" width="1000" height="150" rx="14" fill="#09090b"/>
+    <rect x="60" y="145" width="130" height="22" rx="6" fill="url(#badgeGrad1)"/>
+    <text x="125" y="160" font-family="sans-serif" font-size="11" font-weight="700" fill="#ffffff" text-anchor="middle" letter-spacing="0.5">PREMIUM FORMULAS</text>
+    <text x="60" y="205" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="26" font-weight="800" fill="#ffffff" letter-spacing="-0.5">
+      Peak Performance &amp; Muscle Recovery
+    </text>
+    <text x="60" y="235" font-family="sans-serif" font-size="13" fill="#a1a1aa">
+      Lab-tested purity, ultra-filtered protein &amp; zero artificial fillers. Free shipping across India.
+    </text>
+
+    <!-- Product Grid Header -->
+    <text x="40" y="310" font-family="sans-serif" font-size="16" font-weight="700" fill="#0f172a">Featured Supplements</text>
+    <text x="960" y="310" font-family="sans-serif" font-size="12" font-weight="600" fill="#10b981">View All Products →</text>
+
+    <!-- 3 Product Cards -->
+    <!-- Card 1 -->
+    <g transform="translate(40, 330)">
+      <rect width="315" height="280" rx="14" fill="url(#cardGrad1)" stroke="#e2e8f0" stroke-width="1.2"/>
+      <rect x="15" y="15" width="285" height="130" rx="10" fill="#f8fafc"/>
+      <!-- Supplement Tub Icon Graphic -->
+      <rect x="125" y="35" width="65" height="85" rx="10" fill="#18181b"/>
+      <rect x="135" y="25" width="45" height="12" rx="4" fill="#3f3f46"/>
+      <rect x="135" y="60" width="45" height="20" rx="4" fill="#10b981"/>
+      <text x="157" y="74" font-family="sans-serif" font-size="8" font-weight="800" fill="#ffffff" text-anchor="middle">WHEY</text>
+
+      <text x="20" y="170" font-family="sans-serif" font-size="14" font-weight="700" fill="#0f172a">100% Pure Whey Isolate</text>
+      <text x="20" y="190" font-family="sans-serif" font-size="11" fill="#64748b">27g Protein • 5.5g BCAA • 2kg Tub</text>
+      
+      <text x="20" y="230" font-family="sans-serif" font-size="18" font-weight="800" fill="#0f172a">₹2,499</text>
+      <text x="85" y="230" font-family="sans-serif" font-size="12" fill="#94a3b8" text-decoration="line-through">₹3,499</text>
+      
+      <rect x="20" y="245" width="275" height="34" rx="8" fill="#10b981"/>
+      <text x="157" y="266" font-family="sans-serif" font-size="12" font-weight="700" fill="#ffffff" text-anchor="middle">Add to Cart</text>
+    </g>
+
+    <!-- Card 2 -->
+    <g transform="translate(382, 330)">
+      <rect width="315" height="280" rx="14" fill="url(#cardGrad1)" stroke="#e2e8f0" stroke-width="1.2"/>
+      <rect x="15" y="15" width="285" height="130" rx="10" fill="#f8fafc"/>
+      <!-- Tub Icon -->
+      <rect x="125" y="35" width="65" height="85" rx="10" fill="#0f172a"/>
+      <rect x="135" y="25" width="45" height="12" rx="4" fill="#475569"/>
+      <rect x="135" y="60" width="45" height="20" rx="4" fill="#3b82f6"/>
+      <text x="157" y="74" font-family="sans-serif" font-size="8" font-weight="800" fill="#ffffff" text-anchor="middle">CREA</text>
+
+      <text x="20" y="170" font-family="sans-serif" font-size="14" font-weight="700" fill="#0f172a">Micronized Creatine Mono</text>
+      <text x="20" y="190" font-family="sans-serif" font-size="11" fill="#64748b">100% Creapure • 83 Servings • 250g</text>
+      
+      <text x="20" y="230" font-family="sans-serif" font-size="18" font-weight="800" fill="#0f172a">₹899</text>
+      <text x="75" y="230" font-family="sans-serif" font-size="12" fill="#94a3b8" text-decoration="line-through">₹1,299</text>
+      
+      <rect x="20" y="245" width="275" height="34" rx="8" fill="#0f172a"/>
+      <text x="157" y="266" font-family="sans-serif" font-size="12" font-weight="700" fill="#ffffff" text-anchor="middle">Add to Cart</text>
+    </g>
+
+    <!-- Card 3 -->
+    <g transform="translate(725, 330)">
+      <rect width="315" height="280" rx="14" fill="url(#cardGrad1)" stroke="#e2e8f0" stroke-width="1.2"/>
+      <rect x="15" y="15" width="285" height="130" rx="10" fill="#f8fafc"/>
+      <!-- Tub Icon -->
+      <rect x="125" y="35" width="65" height="85" rx="10" fill="#18181b"/>
+      <rect x="135" y="25" width="45" height="12" rx="4" fill="#ef4444"/>
+      <rect x="135" y="60" width="45" height="20" rx="4" fill="#ef4444"/>
+      <text x="157" y="74" font-family="sans-serif" font-size="8" font-weight="800" fill="#ffffff" text-anchor="middle">PUMP</text>
+
+      <text x="20" y="170" font-family="sans-serif" font-size="14" font-weight="700" fill="#0f172a">High-Voltage Pre-Workout</text>
+      <text x="20" y="190" font-family="sans-serif" font-size="11" fill="#64748b">Caffeine 300mg • Beta Alanine • 30 Serv</text>
+      
+      <text x="20" y="230" font-family="sans-serif" font-size="18" font-weight="800" fill="#0f172a">₹1,499</text>
+      <text x="85" y="230" font-family="sans-serif" font-size="12" fill="#94a3b8" text-decoration="line-through">₹2,199</text>
+      
+      <rect x="20" y="245" width="275" height="34" rx="8" fill="#0f172a"/>
+      <text x="157" y="266" font-family="sans-serif" font-size="12" font-weight="700" fill="#ffffff" text-anchor="middle">Add to Cart</text>
+    </g>
+
+  </g>
+</svg>

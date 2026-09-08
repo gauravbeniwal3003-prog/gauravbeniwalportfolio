@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 700" width="100%" height="100%">
+  <defs>
+    <linearGradient id="avatarGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#f4f4f5" />
+      <stop offset="100%" stop-color="#e4e4e7" />
+    </linearGradient>
+    <linearGradient id="accentGlow" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#10b981" stop-opacity="0.15" />
+      <stop offset="100%" stop-color="#059669" stop-opacity="0.05" />
+    </linearGradient>
+  </defs>
+  <!-- Background Card -->
+  <rect width="600" height="700" fill="url(#avatarGrad)" rx="24"/>
+  <circle cx="300" cy="240" r="160" fill="url(#accentGlow)" />
+  
+  <!-- Silhouette / Stylized Avatar -->
+  <circle cx="300" cy="230" r="85" fill="#18181b" opacity="0.85"/>
+  <path d="M170 520 C170 380, 430 380, 430 520 Z" fill="#18181b" opacity="0.85"/>
+  
+  <!-- Sleek tech badges overlay -->
+  <rect x="180" y="580" width="240" height="48" rx="24" fill="#ffffff" stroke="#e4e4e7" stroke-width="2"/>
+  <text x="300" y="610" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="16" font-weight="600" fill="#09090b" text-anchor="middle">Gaurav Beniwal</text>
+  <text x="300" y="645" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="13" font-weight="500" fill="#71717a" text-anchor="middle">Software &amp; Digital Product Developer</text>
+</svg>
