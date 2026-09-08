@@ -3,5 +3,7 @@ build/
 coverage/
 .DS_Store
 *.log
+bun.lock
+bun.lockb
 .env*
 !.env.example
